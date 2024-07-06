@@ -1,14 +1,13 @@
 "use client";
 
-import * as Sentry from "@sentry/nextjs";
 import Head from "next/head";
 
 export default function Page() {
   return (
     <div>
       <Head>
-        <title>Sentry Onboarding</title>
-        <meta name="description" content="Test Sentry for your Next.js app!" />
+        <title>Onboarding</title>
+        <meta name="description" content="Test for your Next.js app!" />
       </Head>
 
       <main
@@ -48,19 +47,8 @@ export default function Page() {
             fontSize: "14px",
             margin: "18px",
           }}
-          onClick={async () => {
-            await Sentry.startSpan(
-              {
-                name: "Example Frontend Span",
-                op: "test",
-              },
-              async () => {
-                const res = await fetch("/api/sentry-example-api");
-                if (!res.ok) {
-                  throw new Error("Sentry Example Frontend Error");
-                }
-              }
-            );
+          onClick={() => {
+            throw new Error("Example Frontend Error");
           }}
         >
           Throw error!
